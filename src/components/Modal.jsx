@@ -10,10 +10,12 @@ const Modal = function Modal({ children, open }) {
     } else {
       dialog.current.close();
     }
-  }, []);
+  }, [open]);
+
+  // we should pass as dependency paramter (the second paramter of useEffect, the value that we want that, when changes, will make the useEffect run again)
 
   return createPortal(
-    <dialog className="modal" ref={dialog} open={open}>
+    <dialog className="modal" ref={dialog}>
       {children}
     </dialog>,
     document.getElementById('modal')
